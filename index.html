@@ -5,92 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The "Laziest" Aesthetic Body Blueprint</title>
     <style>
+        /* Modern & Aesthetic Styling using CSS Variables */
+        :root {
+            --primary-color: #007bff; /* Deep Blue */
+            --secondary-color: #2c3e50; /* Dark Text */
+            --accent-light: #e6f2ff; /* Light Blue for backgrounds */
+            --background-body: #f8f9fa;
+            --background-container: #ffffff;
+            --text-color: #333;
+            --border-color: #e9ecef;
+        }
+
         /* Base styles for all devices */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Slightly more modern font stack */
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: var(--background-body);
+            color: var(--text-color);
         }
         .container {
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px; /* Reduced padding for mobile */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box; /* Include padding in the element's total width and height */
+            max-width: 1000px; /* Increased max-width */
+            margin: 30px auto; /* Added vertical margin */
+            background: var(--background-container);
+            padding: 40px;
+            border-radius: 12px; /* Soft rounded corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Softer, more pronounced shadow */
+            box-sizing: border-box;
         }
         h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            font-size: 1.8em; /* Adjusted for mobile */
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2.5em; /* Larger heading */
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
         }
         h2 {
-            color: #3498db;
-            margin-top: 25px;
-            font-size: 1.4em;
+            color: var(--secondary-color);
+            margin-top: 40px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color); /* Lighter divider */
+            font-size: 1.8em;
+            font-weight: 600;
         }
+        p strong {
+            color: var(--secondary-color);
+        }
+
         /* Table container for horizontal scrolling on small screens */
         .table-responsive {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            margin-top: 15px;
         }
         table {
             width: 100%;
-            min-width: 600px; /* Ensures table is readable before needing scroll */
-            border-collapse: collapse;
+            min-width: 650px; 
+            border-collapse: separate; /* Use separate for border-radius */
+            border-spacing: 0;
             margin-bottom: 20px;
-            table-layout: fixed; /* Helps control column width */
+            border-radius: 8px; /* Rounded corners for the table */
+            overflow: hidden; /* Important for containing rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* subtle table shadow */
+            background-color: var(--background-container);
         }
         th, td {
-            padding: 10px; /* Reduced padding */
-            border: 1px solid #ddd;
+            padding: 12px 15px; /* Comfortable padding */
             text-align: left;
-            word-wrap: break-word; /* Prevents overflow */
+            border: none; /* Remove default aggressive borders */
         }
         th {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
-            font-size: 0.9em;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
         }
         td {
-            font-size: 0.9em;
+            font-size: 0.95em;
+            border-bottom: 1px solid var(--border-color); /* Light horizontal line */
         }
+        /* Style for the last row's cells to remove the bottom border */
+        tr:last-child td {
+            border-bottom: none;
+        }
+
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: var(--accent-light); /* Light blue background for even rows */
         }
+        tr:hover {
+            background-color: #f0f8ff; /* Subtle hover effect */
+        }
+
+        /* Styling for links in the workout table */
+        td a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        td a:hover {
+            text-decoration: underline;
+            color: #0056b3; /* Darker blue on hover */
+        }
+        
+        /* Note Box Styling */
         .note {
-            background-color: #ecf0f1;
-            padding: 15px;
-            border-left: 5px solid #2c3e50;
-            margin: 20px 0;
+            background-color: var(--accent-light);
+            padding: 20px;
+            border-left: 6px solid var(--primary-color);
+            margin: 30px 0;
+            border-radius: 8px;
+            line-height: 1.8;
         }
+        .note strong {
+            color: var(--secondary-color);
+        }
+
 
         /* Media Query for smaller screens (max 600px) */
         @media (max-width: 600px) {
             .container {
-                padding: 10px;
+                margin: 10px auto;
+                padding: 20px 10px;
+                border-radius: 0; /* Full width on mobile */
+                box-shadow: none;
             }
             h1 {
-                font-size: 1.5em;
+                font-size: 1.8em;
+                margin-bottom: 20px;
             }
             h2 {
-                font-size: 1.2em;
+                font-size: 1.4em;
+                margin-top: 30px;
             }
             th, td {
-                font-size: 0.8em;
-                padding: 8px;
+                font-size: 0.85em;
+                padding: 10px;
             }
-            /* Force table cells to display vertically on smallest screens (less common, but useful for Strategy table) */
+            /* Adjust min-width to ensure tables remain horizontally scrollable but don't force overflow too easily */
             #strategy-table table, #schedule-table table {
-                min-width: 100%; /* Allows tables to shrink */
+                min-width: 450px;
             }
             #workout-table table {
-                min-width: 700px; /* Keep this wide for links and exercise names */
+                min-width: 600px;
             }
         }
     </style>
@@ -116,42 +186,42 @@
             <tbody>
                 <tr>
                     <td><strong>Frequency</strong></td>
-                    <td>**3 Full-Body Workouts** per week (Mon, Wed, Fri).</td>
+                    <td>3 Full-Body Workouts per week (Mon, Wed, Fri).</td>
                     <td>Maximizes recovery and consistency to prevent burnout.</td>
                 </tr>
                 <tr>
                     <td><strong>Exercise</strong></td>
-                    <td>Focus on **Compound Movements** (80% of routine).</td>
+                    <td>Focus on Compound Movements (80% of routine).</td>
                     <td>Trains multiple muscle groups at once for ultimate efficiency.</td>
                 </tr>
                 <tr>
                     <td><strong>Volume</strong></td>
-                    <td>Use only **1–3 sets** per exercise.</td>
+                    <td>Use only 1–3 sets per exercise.</td>
                     <td>High intensity on fewer sets provides a strong stimulus for growth.</td>
                 </tr>
                 <tr>
                     <td><strong>Intensity</strong></td>
-                    <td>Use the **4–10 Rep Range** for most exercises.</td>
+                    <td>Use the 4–10 Rep Range for most exercises.</td>
                     <td>Optimal range for building both strength and muscle (hypertrophy).</td>
                 </tr>
                 <tr>
                     <td><strong>Rest</strong></td>
-                    <td>Take **3–6 minutes** of rest between sets.</td>
+                    <td>Take 3–6 minutes of rest between sets.</td>
                     <td>Fully recovers the Central Nervous System (CNS) for maximum performance on every set.</td>
                 </tr>
                 <tr>
                     <td><strong>Cardio</strong></td>
-                    <td>**10,000–12,000 Slow Steps** daily (walking).</td>
+                    <td>10,000–12,000 Slow Steps daily (walking).</td>
                     <td>Gentle, low-stress cardio that aids fat loss without hindering muscle recovery.</td>
                 </tr>
                 <tr>
                     <td><strong>Nutrition</strong></td>
-                    <td>**1–2 Meals per Day** (OMAD or two meals).</td>
+                    <td>1–2 Meals per Day (OMAD or two meals).</td>
                     <td>Simplifies cooking/prep time and helps manage calorie intake.</td>
                 </tr>
                 <tr>
                     <td><strong>Diet</strong></td>
-                    <td>Focus on **Protein-Dominant Meals**.</td>
+                    <td>Focus on Protein-Dominant Meals.</td>
                     <td>Ensures muscle-building nutrients are prioritized over excess carbs/calories.</td>
                 </tr>
             </tbody>
@@ -171,39 +241,39 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>**Monday**</td>
-                    <td>**Workout A** (Full Body)</td>
+                    <td><strong>Monday</strong></td>
+                    <td><strong>Workout A</strong> (Full Body)</td>
                     <td>Strength & Hypertrophy</td>
                 </tr>
                 <tr>
-                    <td>**Tuesday**</td>
-                    <td>**Active Recovery**</td>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Active Recovery</td>
                     <td>10,000–12,000 Slow Steps</td>
                 </tr>
                 <tr>
-                    <td>**Wednesday**</td>
-                    <td>**Workout B** (Full Body)</td>
+                    <td><strong>Wednesday</strong></td>
+                    <td><strong>Workout B</strong> (Full Body)</td>
                     <td>Strength & Hypertrophy</td>
                 </tr>
                 <tr>
-                    <td>**Thursday**</td>
-                    <td>**Active Recovery**</td>
+                    <td><strong>Thursday</strong></td>
+                    <td>Active Recovery</td>
                     <td>10,000–12,000 Slow Steps</td>
                 </tr>
                 <tr>
-                    <td>**Friday**</td>
-                    <td>**Workout C** (Full Body)</td>
+                    <td><strong>Friday</strong></td>
+                    <td><strong>Workout C</strong> (Full Body)</td>
                     <td>Strength & Hypertrophy</td>
                 </tr>
                 <tr>
-                    <td>**Saturday**</td>
-                    <td>**Rest/Active Recovery**</td>
+                    <td><strong>Saturday</strong></td>
+                    <td>Rest/Active Recovery</td>
                     <td>Optional 10,000+ steps</td>
                 </tr>
                 <tr>
-                    <td>**Sunday**</td>
-                    <td>**Rest**</td>
-                    <td>**Prioritize 8–10 hours of Sleep**</td>
+                    <td><strong>Sunday</strong></td>
+                    <td>Rest</td>
+                    <td><strong>Prioritize 8–10 hours of Sleep</strong></td>
                 </tr>
             </tbody>
         </table>
@@ -227,73 +297,73 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>**Workout A**</td>
+                    <td><strong>Workout A</strong></td>
                     <td><a href="https://www.youtube.com/watch?v=bf93PZWLeF8">Incline Dumbbell Press</a></td>
                     <td>Upper Chest, Shoulders, Triceps</td>
                     <td><a href="https://www.youtube.com/watch?v=bf93PZWLeF8">Incline Dumbbell Bench Press Tutorial</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout A**</td>
+                    <td><strong>Workout A</strong></td>
                     <td>Barbell Row or <a href="https://www.youtube.com/shorts/2NXnuTQXJA4">Dumbbell Row</a></td>
                     <td>Back, Biceps</td>
                     <td><a href="https://www.youtube.com/shorts/2NXnuTQXJA4">How to do a Barbell Bent Over Row Properly</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout A**</td>
+                    <td><strong>Workout A</strong></td>
                     <td>Leg Press or <a href="https://www.youtube.com/watch?v=UYdx6ammdwU">Goblet Squat</a></td>
                     <td>Quads, Glutes</td>
                     <td><a href="https://www.youtube.com/watch?v=UYdx6ammdwU">Leg Press + Seated Leg Press | HOW TO USE + FORM</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout A**</td>
+                    <td><strong>Workout A</strong></td>
                     <td><a href="https://www.youtube.com/shorts/9g7DeoHFgL0">Overhead Triceps Extension</a></td>
                     <td>Triceps (Isolation)</td>
                     <td><a href="https://www.youtube.com/shorts/9g7DeoHFgL0">Dumbbell Overhead Extension Explained!</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout B**</td>
+                    <td><strong>Workout B</strong></td>
                     <td><a href="https://www.youtube.com/watch?v=prP9rHHp0tg">Overhead Dumbbell Press</a></td>
                     <td>Shoulders, Triceps</td>
                     <td><a href="https://www.youtube.com/watch?v=prP9rHHp0tg">Dumbbell Overhead Press | Exercise Technique Library</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout B**</td>
+                    <td><strong>Workout B</strong></td>
                     <td><a href="https://www.youtube.com/watch?v=AOpi-p0cJkc">Lat Pulldown</a> or Assisted Pull-ups</td>
                     <td>Back, Biceps</td>
                     <td><a href="https://www.youtube.com/watch?v=AOpi-p0cJkc">Beginner's Guide: Lat Pulldown</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout B**</td>
+                    <td><strong>Workout B</strong></td>
                     <td><a href="https://www.youtube.com/watch?v=IJdUtnxAmNo">Romanian Deadlift (RDL)</a></td>
                     <td>Hamstrings, Glutes, Lower Back</td>
                     <td><a href="https://www.youtube.com/watch?v=IJdUtnxAmNo">Dumbbell Romanian Deadlift | Exercise Technique Library</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout B**</td>
+                    <td><strong>Workout B</strong></td>
                     <td><a href="https://www.youtube.com/watch?v=Nr-sPLLOIwE">Bicep Curls</a></td>
                     <td>Biceps (Isolation)</td>
                     <td><a href="https://www.youtube.com/watch?v=Nr-sPLLOIwE">How to do Standing Bicep Curls with Dumbbells</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout C**</td>
+                    <td><strong>Workout C</strong></td>
                     <td><a href="https://www.youtube.com/shorts/d33SDkfL1yQ">Flat Dumbbell Press</a> or Push-ups</td>
                     <td>Chest, Triceps</td>
                     <td><a href="https://www.youtube.com/shorts/d33SDkfL1yQ">How To do A Lying Chest Press with Dumbbells - Form Tips</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout C**</td>
+                    <td><strong>Workout C</strong></td>
                     <td><a href="https://www.youtube.com/watch?v=KDEl3AmZbVE">T-Bar Row</a> or Seal Row</td>
                     <td>Back, Biceps</td>
                     <td><a href="https://www.youtube.com/watch?v=KDEl3AmZbVE">T-Bar Row with Handle | Exercise Guide</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout C**</td>
+                    <td><strong>Workout C</strong></td>
                     <td><a href="https://www.youtube.com/shorts/uB0dAo9m2BU">Split Squats</a> or Lunges</td>
                     <td>Quads, Glutes, Balance</td>
                     <td><a href="https://www.youtube.com/shorts/uB0dAo9m2BU">Master Bulgarian Split Squats: Proper Form for Glute Growth</a></td>
                 </tr>
                 <tr>
-                    <td>**Workout C**</td>
+                    <td><strong>Workout C</strong></td>
                     <td><a href="https://www.youtube.com/watch?v=nnH63icHYXY">Lateral Raises</a></td>
                     <td>Shoulders (Isolation)</td>
                     <td><a href="https://www.youtube.com/watch?v=nnH63icHYXY">Dumbbell Lateral Raise | Proper Form Tutorial for Bigger Shoulders</a></td>
